@@ -1,0 +1,7 @@
+D:\ModelGuard AI\backend\requirements.txt
+D:\ModelGuard AI\frontend\index.html
+D:\ModelGuard AI\frontend\README.md
+D:\ModelGuard AI\frontend\public\favicon.svg
+D:\ModelGuard AI\frontend\public\icons.svg
+D:\ModelGuard AI\frontend\src\assets\hero.png
+D:\ModelGuard AI\frontend\src\assets\vite.svg

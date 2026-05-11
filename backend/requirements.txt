@@ -1,0 +1,10 @@
+# Backend Dependencies
+fastapi
+uvicorn
+sqlalchemy
+scikit-learn
+xgboost
+pandas
+numpy
+joblib
+python-dotenv

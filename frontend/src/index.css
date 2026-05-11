@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ─── Warm Dark — Core Surface Tokens ─── */
+  --background: #181314;
+  --surface: #221C1D;
+  --surface-dim: #1B1718;
+  --surface-bright: #2A2425;
+  --surface-container-lowest: #141011;
+  --surface-container-low: #1C1718;
+  --surface-container: #2A2425;
+  --surface-container-high: #342D2F;
+  --surface-container-highest: #3F373A;
+
+  /* ─── Accent Colors (Solid Theme) ─── */
+  --primary-red: #A53535;
+  --primary-red-hover: #BF3F3F;
+  --primary-orange: #D9652B;
+  --primary-green: #6C7A3F;
+  --primary-purple: #7D3B73;
+  --primary-yellow: #D9A026;
+  --primary-blue: #3076A3;
+
+  /* ─── Neutrals / Text ─── */
+  --on-background: #FFFFFF;
+  --on-surface: #FFFFFF;
+  --on-surface-variant: #A39F9F;
+  --outline: #746D6E;
+  --outline-variant: rgba(255, 255, 255, 0.05);
+
+  /* ─── Semantic ─── */
+  --success: #6C7A3F;
+  --danger: #A53535;
+  --warning: #D9652B;
+
+  /* ─── Typography ─── */
+  --font-display: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* ─── Typography Scale ─── */
+  --display-lg: 3rem;
+  --display-md: 2.25rem;
+  --display-sm: 1.75rem;
+  --headline-lg: 1.5rem;
+  --headline-md: 1.25rem;
+  --headline-sm: 1.125rem;
+  --title-lg: 1rem;
+  --title-md: 0.9375rem;
+  --title-sm: 0.8125rem;
+  --body-lg: 1rem;
+  --body-md: 0.875rem;
+  --body-sm: 0.8125rem;
+  --label-lg: 0.875rem;
+  --label-md: 0.75rem;
+  --label-sm: 0.6875rem;
+
+  /* ─── Spacing ─── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* ─── Radius — Warm Dark Rounded ─── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ─── Shadows ─── */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-ambient: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+  /* ─── Borders ─── */
+  --border-card: 1px solid rgba(255, 255, 255, 0.04);
+  --border-input: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-container-high);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════ */
+
+.btn-primary {
+  background: var(--primary-red);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--body-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(165, 53, 53, 0.2);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-red-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--surface-container);
+  color: var(--on-surface);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--body-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--surface-container-high);
+}
+
+/* ═══════════════════════════════════════════
+   CHART CARD
+   ═══════════════════════════════════════════ */
+.chart-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════
+   FORM INPUTS
+   ═══════════════════════════════════════════ */
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--outline);
+  opacity: 0.7;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-red) !important;
+}
+
+/* ═══════════════════════════════════════════
+   STATUS BADGES
+   ═══════════════════════════════════════════ */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.status-badge--class1 {
+  background: rgba(165, 53, 53, 0.15);
+  color: var(--primary-red);
+}
+
+.status-badge--class0 {
+  background: rgba(108, 122, 63, 0.15);
+  color: var(--primary-green);
+}

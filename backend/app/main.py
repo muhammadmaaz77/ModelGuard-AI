@@ -121,6 +121,40 @@ async def upload_files(
     reference_csv    : UploadFile = File(...),
     feature_names    : UploadFile = File(...),
 ):
+    import json
+    import csv
+    from fastapi import HTTPException
+
+    # 1. Read Feature Names
+    features_content = await feature_names.read()
+    try:
+        expected_features = json.loads(features_content)
+        if not isinstance(expected_features, list):
+            raise ValueError()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Upload failed: feature_names must be a valid JSON list of strings.")
+
+    # 2. Read CSV Header
+    csv_header_line = await reference_csv.read(8192)
+    try:
+        csv_header_str = csv_header_line.decode('utf-8')
+        csv_reader = csv.reader(csv_header_str.splitlines())
+        csv_headers = next(csv_reader)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Upload failed: The reference dataset must be a valid CSV file.")
+
+    # 3. Feature Completeness Validation
+    missing_features = [f for f in expected_features if f not in csv_headers]
+    if missing_features:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Upload failed: Reference CSV schema does not match feature names. Missing columns: {missing_features}. Please ensure you are uploading the processed (encoded) training dataset."
+        )
+
+    # Reset file pointers for saving
+    await feature_names.seek(0)
+    await reference_csv.seek(0)
+
     os.makedirs(MODELS_SAVED_DIR,   exist_ok=True)
     os.makedirs(DATA_REFERENCE_DIR, exist_ok=True)
 

@@ -20,6 +20,8 @@ yarn-error.log*
 
 # Database & Models
 backend/modelguard.db
+modelguard.db
+*.db
 models/saved/*.pkl
 data/reference/*.json
 data/reference/*.csv

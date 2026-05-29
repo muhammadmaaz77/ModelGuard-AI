@@ -8,7 +8,7 @@ from datetime import datetime
 
 REPO_ROOT          = r"D:\ModelGuard AI"
 DATA_REFERENCE_DIR = os.path.join(REPO_ROOT, "data", "reference")
-DB_PATH            = os.path.join(REPO_ROOT, "backend", "modelguard.db")
+DB_PATH            = os.path.join(REPO_ROOT, "modelguard.db")
 REFERENCE_CSV      = os.path.join(DATA_REFERENCE_DIR, "X_train_reference.csv")
 FEATURE_NAMES_PATH = os.path.join(DATA_REFERENCE_DIR, "feature_names.json")
 
